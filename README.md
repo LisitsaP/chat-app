@@ -1,3 +1,5 @@
+# Chat App with MERN Stack
+
 :white_check_mark:  Tech stack: MERN + Socket.io + TailwindCSS + Daisy UI
 
 :white_check_mark:  Authentication && Authorization with JWT
