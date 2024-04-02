@@ -14,49 +14,53 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-top min-w-96 mx-auto">
-      <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-blur-lg bg-opacity-0">
-        <h1 className="text-3xl font-semibold text-center text-white">
-          Login <snap className="text-accent">ChatApp</snap>{" "}
+    <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
+      <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
+        <h1 className="text-3xl font-semibold text-center text-gray-300">
+          Login
+          <span className="text-[#2ED1D8]"> ChatApp</span>
         </h1>
+
         <form onSubmit={handleSubmit}>
           <div>
             <label className="label p-2">
-              <span className="text-white label-text">Username</span>
+              <span className="text-base label-text">Username</span>
             </label>
             <input
               type="text"
               placeholder="Enter username"
-              className="w-full input input-accent h-10"
+              className="w-full input input-primary  h-10 shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 border-white text-white"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
+
           <div>
             <label className="label">
-              <span className="text-white label-text">Password</span>
+              <span className="text-base label-text">Password</span>
             </label>
             <input
               type="password"
               placeholder="Enter Password"
-              className="w-full input input-accent h-10"
+              className="w-full input input-primary input-bordered h-10 shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 border-white text-white"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <Link
-            to={"/signup"}
-            className="text-sm text-neutral-content hover:underline hover:text-accent mt-2 h-10inline block"
+            to="/signup"
+            className="text-sm  hover:underline hover:text-[#4219B8] mt-2 inline-block"
           >
             {"Don't"} have an account?
           </Link>
+
           <div>
             <button
+              className="btn btn-block btn-sm mt-2 hover:bg-[#4219B8] hover:text-white hover:border-none"
               disabled={loading}
-              className="btn btn-block btn-outline btn-accent text-hover-white "
             >
               {loading ? (
-                <span className="loading loading-spinner"></span>
+                <span className="loading loading-spinner "></span>
               ) : (
                 "Login"
               )}
@@ -67,5 +71,46 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;
+
+// STARTER CODE FOR THIS FILE
+// const Login = () => {
+// 	return (
+// 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
+// 			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
+// 				<h1 className='text-3xl font-semibold text-center text-gray-300'>
+// 					Login
+// 					<span className='text-blue-500'> ChatApp</span>
+// 				</h1>
+
+// 				<form>
+// 					<div>
+// 						<label className='label p-2'>
+// 							<span className='text-base label-text'>Username</span>
+// 						</label>
+// 						<input type='text' placeholder='Enter username' className='w-full input input-bordered h-10' />
+// 					</div>
+
+// 					<div>
+// 						<label className='label'>
+// 							<span className='text-base label-text'>Password</span>
+// 						</label>
+// 						<input
+// 							type='password'
+// 							placeholder='Enter Password'
+// 							className='w-full input input-bordered h-10'
+// 						/>
+// 					</div>
+// 					<a href='#' className='text-sm  hover:underline hover:text-blue-600 mt-2 inline-block'>
+// 						{"Don't"} have an account?
+// 					</a>
+
+// 					<div>
+// 						<button className='btn btn-block btn-sm mt-2'>Login</button>
+// 					</div>
+// 				</form>
+// 			</div>
+// 		</div>
+// 	);
+// };
+// export default Login;

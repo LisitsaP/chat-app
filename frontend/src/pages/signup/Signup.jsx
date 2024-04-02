@@ -4,17 +4,20 @@ import { useState } from "react";
 import useSignup from "../../hooks/useSignup";
 
 const SignUp = () => {
-  const [inputs, setInput] = useState({
+  const [inputs, setInputs] = useState({
     fullName: "",
     username: "",
     password: "",
     confirmPassword: "",
     gender: "",
   });
+
   const { loading, signup } = useSignup();
+
   const handleCheckboxChange = (gender) => {
-    setInput({ ...inputs, gender });
+    setInputs({ ...inputs, gender });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(inputs);
@@ -22,80 +25,89 @@ const SignUp = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
-      <div className="w-full p-6 rounded-lg shadow bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
+      <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
         <h1 className="text-3xl font-semibold text-center text-gray-300">
-          Sine Op <snap className="text-accent">ChatApp</snap>
+          Sign Up <span className="text-[#2ED1D8]"> ChatApp</span>
         </h1>
+
         <form onSubmit={handleSubmit}>
           <div>
             <label className="label p-2">
-              <snap className="text-white label-text">Full Name</snap>
+              <span className="text-base label-text">Full Name</span>
             </label>
             <input
-              className="w-full input input-accent input-bordered h-10 "
               type="text"
-              placeholder="Your name"
+              placeholder="Enter your full name"
+              className="w-full input input-primary input-bordered h-10 shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 border-white text-white"
               value={inputs.fullName}
               onChange={(e) =>
-                setInput({ ...inputs, fullName: e.target.value })
+                setInputs({ ...inputs, fullName: e.target.value })
               }
             />
           </div>
+
           <div>
-            <label className="label p-2">
-              <snap className="text-white label-text">Username</snap>
+            <label className="label p-2 ">
+              <span className="text-base label-text">Username</span>
             </label>
             <input
-              className="w-full input input-accent input-bordered h-10 "
               type="text"
-              placeholder="Your username"
+              placeholder="Enter your username"
+              className="w-full input input-primary input-bordered h-10 shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 border-white text-white"
               value={inputs.username}
               onChange={(e) =>
-                setInput({ ...inputs, username: e.target.value })
+                setInputs({ ...inputs, username: e.target.value })
               }
             />
           </div>
+
           <div>
-            <label className="label p-2">
-              <snap className="text-white label-text">Password</snap>
+            <label className="label">
+              <span className="text-base label-text">Password</span>
             </label>
             <input
-              className="w-full input input-accent input-bordered h-10 "
               type="password"
-              placeholder="Password"
+              placeholder="Enter Password"
+              className="w-full input input-primary input-bordered shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 border-white text-white h-10"
               value={inputs.password}
               onChange={(e) =>
-                setInput({ ...inputs, password: e.target.value })
+                setInputs({ ...inputs, password: e.target.value })
               }
             />
           </div>
+
           <div>
-            <label className="label p-2">
-              <snap className="text-white label-text">Confirm Password</snap>
+            <label className="label">
+              <span className="text-base label-text">Confirm Password</span>
             </label>
             <input
-              className="w-full input input-accent input-bordered h-10 "
               type="password"
               placeholder="Confirm Password"
+              className="w-full input input-primary input-bordered h-10 shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 border-white text-white"
               value={inputs.confirmPassword}
               onChange={(e) =>
-                setInput({ ...inputs, confirmPassword: e.target.value })
+                setInputs({ ...inputs, confirmPassword: e.target.value })
               }
             />
           </div>
+
           <GenderCheckbox
             onCheckboxChange={handleCheckboxChange}
             selectedGender={inputs.gender}
+            className="checkbox-primary"
           />
+
           <Link
             to={"/login"}
-            className="text-sm text-neutral-content hover:underline hover:text-accent mt-2 h-10inline block"
+            className="text-sm  hover:underline hover:text-[#4219B8] mt-2 inline-block"
+            href="#"
           >
-            {"Don't"}Already have an account?
+            Already have an account?
           </Link>
+
           <div>
             <button
-              className="btn btn-block btn-sm mt-2 border border-slate-700"
+              className="btn btn-block btn-sm mt-2 hover:bg-[#4219B8] hover:text-white hover:border-none"
               disabled={loading}
             >
               {loading ? (
@@ -110,5 +122,68 @@ const SignUp = () => {
     </div>
   );
 };
-
 export default SignUp;
+
+// STARTER CODE FOR THE SIGNUP COMPONENT
+// import GenderCheckbox from "./GenderCheckbox";
+
+// const SignUp = () => {
+// 	return (
+// 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
+// 			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
+// 				<h1 className='text-3xl font-semibold text-center text-gray-300'>
+// 					Sign Up <span className='text-blue-500'> ChatApp</span>
+// 				</h1>
+
+// 				<form>
+// 					<div>
+// 						<label className='label p-2'>
+// 							<span className='text-base label-text'>Full Name</span>
+// 						</label>
+// 						<input type='text' placeholder='John Doe' className='w-full input input-bordered  h-10' />
+// 					</div>
+
+// 					<div>
+// 						<label className='label p-2 '>
+// 							<span className='text-base label-text'>Username</span>
+// 						</label>
+// 						<input type='text' placeholder='johndoe' className='w-full input input-bordered h-10' />
+// 					</div>
+
+// 					<div>
+// 						<label className='label'>
+// 							<span className='text-base label-text'>Password</span>
+// 						</label>
+// 						<input
+// 							type='password'
+// 							placeholder='Enter Password'
+// 							className='w-full input input-bordered h-10'
+// 						/>
+// 					</div>
+
+// 					<div>
+// 						<label className='label'>
+// 							<span className='text-base label-text'>Confirm Password</span>
+// 						</label>
+// 						<input
+// 							type='password'
+// 							placeholder='Confirm Password'
+// 							className='w-full input input-bordered h-10'
+// 						/>
+// 					</div>
+
+// 					<GenderCheckbox />
+
+// 					<a className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block' href='#'>
+// 						Already have an account?
+// 					</a>
+
+// 					<div>
+// 						<button className='btn btn-block btn-sm mt-2 border border-slate-700'>Sign Up</button>
+// 					</div>
+// 				</form>
+// 			</div>
+// 		</div>
+// 	);
+// };
+// export default SignUp;

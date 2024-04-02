@@ -1,19 +1,20 @@
 import { useSocketContext } from "../../context/SocketContext";
 import useConversation from "../../zustand/useConversation";
 
-export default function Conversation({ conversation, lastIdx, emoji }) {
+const Conversation = ({ conversation, lastIdx, emoji }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
 
   const isSelected = selectedConversation?._id === conversation._id;
   const { onlineUsers } = useSocketContext();
   const isOnline = onlineUsers.includes(conversation._id);
-  console.log(isOnline);
+
   return (
     <>
+      {/* 4219B8 */}
       <div
-        className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer ${
-          isSelected ? "bg-sky-500" : ""
-        }`}
+        className={`flex gap-2 items-center hover:bg-[#4219B8] rounded p-2 py-1 cursor-pointer
+				${isSelected ? "bg-[#4219B8]" : ""}
+			`}
         onClick={() => setSelectedConversation(conversation)}
       >
         <div className={`avatar ${isOnline ? "online" : ""}`}>
@@ -21,6 +22,7 @@ export default function Conversation({ conversation, lastIdx, emoji }) {
             <img src={conversation.profilePic} alt="user avatar" />
           </div>
         </div>
+
         <div className="flex flex-col flex-1">
           <div className="flex gap-3 justify-between">
             <p className="font-bold text-gray-200">{conversation.fullName}</p>
@@ -28,7 +30,9 @@ export default function Conversation({ conversation, lastIdx, emoji }) {
           </div>
         </div>
       </div>
+
       {!lastIdx && <div className="divider my-0 py-0 h-1" />}
     </>
   );
-}
+};
+export default Conversation;
